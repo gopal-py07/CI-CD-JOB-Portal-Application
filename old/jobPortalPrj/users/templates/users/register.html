@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <!-- Section: Design Block -->
+<section class="text-center">
+    <!-- Background image -->
+    <div class="p-5 bg-image" style="
+          background-image: url('https://mdbootstrap.com/img/new/textures/full/171.jpg');
+          height: 300px;
+          "></div>
+    <!-- Background image -->
+  
+    <div class="card mx-4 mx-md-5 shadow-5-strong" style="
+          margin-top: -100px;
+          background: hsla(0, 0%, 100%, 0.8);
+          backdrop-filter: blur(30px);
+          ">
+      <div class="card-body py-5 px-md-5">
+  
+        <div class="row d-flex justify-content-center">
+          <div class="col-lg-8">
+            {% if messages %}
+            <div class="mgs-area">
+                <div class="mgs-item">
+                {% for message in messages %}
+                <span {% if message.tags %} class="nav_item message-{{ message.tags }} " {% endif %}> {{ message }} </span>
+                {% endfor %}
+                </div>
+            </div>
+                {% endif %}
+            {% comment %} <h2 class="fw-bold mb-5">Sign up now</h2> {% endcomment %}
+                    {% comment %} <div class="container jumbotron"> {% endcomment %}
+                        {% if registered %}
+                            <strong>Thank You for Registering with Us.</strong>
+                            <a href="{% url 'index' %}" class="btn-link btn">Return to the HomePage</a><br>
+                        {% else %}
+                        <h2 class="col-md-6 mb-4">Sign up now</h2>
+                            {% comment %} <strong class="display-3 mb-4">Register Here... </strong> {% endcomment %}
+                            <form action="{% url 'users:register' %}" class="pt-3" method="POST">
+                                {% csrf_token %}
+                                {{ registration_form.as_p }}
+                                {% comment %} <input type="submit" name="submit" value="Register" class="btn btn-success"> {% endcomment %}
+                                <button type="submit" class="btn btn-primary btn-block mb-4">
+                                    Sign up
+                                    </button>
+                                <p class="p-2 m-1">Already a Member? <a href="{% url 'users:login' %}">Sign In Here...</a></p>
+                            </form>
+
+                        {% endif %}
+                </div>     
+            </div> 
+        </div>     
+    </div>         
+</div>                                                              
+{% endblock %} 
+
+
+
+
+
+
+
+
+
+
+
+
+{% comment %} {% extends 'main.html' %}
+
+{%block title %}Register{% endblock  %}
+
+{% block content %}
+
+    <div class="container jumbotron">
+        {% if registered %}
+            <strong>Thank You for Registering with Us.</strong>
+            <a href="{% url 'index' %}" class="btn-link btn">Return to the HomePage</a><br>
+        {% else %}
+            <strong class="display-3 mb-4">Register Here... </strong>
+            <form action="{% url 'users:register' %}" class="pt-3" method="POST">
+                {% csrf_token %}
+                {{ registration_form.as_p }}
+                <input type="submit" name="submit" value="Register" class="btn btn-success">
+                <p class="p-2 m-1">Already a Member? <a href="{% url 'users:login' %}">Sign In Here...</a></p>
+            </form>
+        {% endif %}
+    </div>
+{% endblock %} {% endcomment %}

@@ -1,0 +1,41 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+Try the new cross-platform PowerShell https://aka.ms/pscore6
+
+PS C:\Users\11549> wsl.exe -l -v
+* Ubuntu-18.04                           Running         1
+  docker-desktop                         Running         2
+  SUSE-Linux-Enterprise-Server-15-SP4    Stopped         1
+PS C:\Users\11549> wsl.exe --set-default-version 2
+For information on key differences with WSL 2 please visit https://aka.ms/wsl2
+The operation completed successfully.
+PS C:\Users\11549> wsl --set-default ubuntu
+There is no distribution with the supplied name.
+Error code: Wsl/Service/WSL_E_DISTRO_NOT_FOUND
+PS C:\Users\11549> wsl --set-default Ubuntu-18.04
+The operation completed successfully.
+PS C:\Users\11549> wsl.exe --set-version (distro name) 2
+distro : The term 'distro' is not recognized as the name of a cmdlet, function, script file, or operable program.
+Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:24
++ wsl.exe --set-version (distro name) 2
++                        ~~~~~~
+    + CategoryInfo          : ObjectNotFound: (distro:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Users\11549> wsl.exe -l -v
+  NAME                                   STATE           VERSION
+* Ubuntu-18.04                           Running         1
+  docker-desktop                         Running         2
+  docker-desktop-data                    Running         2
+  SUSE-Linux-Enterprise-Server-15-SP4    Stopped         1
+PS C:\Users\11549> wsl.exe --set-version Ubuntu-18.04 2
+For information on key differences with WSL 2 please visit https://aka.ms/wsl2
+Conversion in progress, this may take a few minutes.
+The operation completed successfully.
+PS C:\Users\11549> wsl.exe --set-default-version 2
+For information on key differences with WSL 2 please visit https://aka.ms/wsl2
+The operation completed successfully.
+PS C:\Users\11549> wsl --set-default Ubuntu-18.04
+The operation completed successfully.
+PS C:\Users\11549>

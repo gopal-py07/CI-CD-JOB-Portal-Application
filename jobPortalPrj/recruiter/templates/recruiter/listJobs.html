@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %} 
+{% block content %}
+
+<div class="container">
+  {%for job in jobs %}
+    {% if request.user == job.recruiter %}
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card card-signin my-5">
+            <div class="card-body">
+              <h3>
+                <b>{{job.title}} ({{job.job_type}})</b>
+              </h3>
+              <p style="font-size: 18px">{{job.company}}, {{job.location}}</p>
+              {% if not job.link %}
+              <a
+                class="btn btn-info btn-lg mr-2"
+                href="{% url 'recruiter:applicants_list' %}"
+                ><b>Applicants List</b></a>
+                <a
+                class="btn btn-info btn-lg mr-2"
+                href="{% url 'recruiter:selected_list' %}"
+                ><b>Selected List</b></a>
+
+              {% endif %}
+              <a
+                class="btn btn-warning btn-lg mr-2"
+                href=""
+                ><b>Edit Job Post</b></a
+              >
+              <a
+                class="btn btn-danger btn-lg"
+                href=""
+                ><b>Search Relevant Candidates</b></a
+              >
+              <hr my-2 />
+              <span style="font-size: 18px"><b>Job Description</b></span>
+              <p style="white-space: pre-wrap; font-size: 16px">
+                {{ job.description }}
+              </p>
+              <hr my-2 />
+              <p><b class="mr-2">Skills Required:</b>{{job.skills_req}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% else %}
+      <div class="row">
+        <div class="col-sm-12 col-md-10 col-lg-8 mx-auto">
+          <div class="card card-signin my-5">
+            <div class="card-body">
+              <h3 class="text-center">You do not have access to this page!</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    {%endif%}
+  {% endfor %}
+</div>
+{% endblock content %}

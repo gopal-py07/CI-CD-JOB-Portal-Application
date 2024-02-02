@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<section class="vh-100" style="background-color: #508bfc;">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                    <div class="card-body p-5 text-center">
+
+                        <h3 class="mb-5">Sign in</h3>
+            
+                        <form id="login_form" class="form" method="post" action="{% url 'users:login' %}">
+                        {% csrf_token %} <!-- for security reasons -->
+                        {% if form.errors %}
+                        <p>username or password not correct</p>
+                        {% endif %}
+
+                        {{login_form.as_p}} <!-- rendering form as paragraph -->
+                        
+                        <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
+                    
+                        {% comment %} <input type="submit" class="btn  btn-outline-info" value="Login"> {% endcomment %}
+
+                        </form>
+                        <p ><a class="px-2 mx-2 btn btn-link text-decoration-none" href="{%url 'users:register' %}">Not a Member?</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
